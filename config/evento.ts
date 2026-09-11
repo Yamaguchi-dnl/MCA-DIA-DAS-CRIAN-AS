@@ -1,0 +1,65 @@
+/**
+ * Configuração central do evento.
+ *
+ * Este é o ÚNICO lugar que deve ser editado para trocar textos, datas,
+ * contatos e imagens do site. Nada disso deve ser hardcoded em componentes
+ * ou páginas.
+ *
+ * Valores marcados como "[A_DEFINIR...]" são placeholders e precisam ser
+ * substituídos pelos dados reais antes da publicação. Nenhum dado de
+ * contato ou credencial foi inventado.
+ */
+
+export const eventoConfig = {
+  // Identificação do evento
+  nomeEvento: "Dia das Crianças",
+  temaEvento: "Uma tarde de festa para a criançada!",
+  descricaoCurta:
+    "Uma tarde especial de alegria e diversão para as crianças da IAP Barreirinha. Entrada gratuita — garanta a vaga da criançada!",
+  descricaoCompleta:
+    "Preparamos uma tarde cheia de alegria para comemorar o Dia das Crianças com a criançada da nossa igreja e da comunidade. Um tempo de diversão, brincadeiras e comunhão para toda a família, com entrada totalmente gratuita.",
+
+  // Data, horário e local
+  // Formato ISO (AAAA-MM-DD) para permitir cálculo de prazo de inscrição.
+  dataEventoISO: "2025-10-03",
+  dataEventoExibicao: "03 de outubro de 2025 (sexta-feira)",
+  horario: "a partir das 12h",
+  local: "IAP Barreirinha",
+  endereco: "Rua Flávio Dallegrave, 9745, Curitiba - PR",
+  linkMapa: "[A_DEFINIR: link do Google Maps, opcional]",
+
+  // Inscrição
+  gratuito: true,
+  idadeMinima: 0,
+  idadeMaxima: 17,
+  faixaEtariaExibicao: "0 a 17 anos",
+  limiteVagas: null as number | null, // null = sem limite de vagas
+
+  // Contato
+  numeroWhatsappContato: "[A_DEFINIR: número de WhatsApp da organização]",
+  instagram: "[A_DEFINIR: link do Instagram]",
+  emailContato: "[A_DEFINIR: e-mail de contato]",
+
+  // Identidade visual
+  logo: "/logo-iap.png",
+  imagemSocial: "/og-image.png",
+
+  // Conteúdo institucional
+  nomeIgreja: "IAP Barreirinha",
+} as const;
+
+export function gerarMensagemWhatsapp(nomeCrianca: string) {
+  return `Olá! Tenho uma dúvida sobre a inscrição de ${nomeCrianca} no evento ${eventoConfig.nomeEvento}.`;
+}
+
+export function gerarLinkWhatsapp(nomeCrianca: string) {
+  const numero = eventoConfig.numeroWhatsappContato.replace(/\D/g, "");
+  if (!numero) return null;
+  const mensagem = encodeURIComponent(gerarMensagemWhatsapp(nomeCrianca));
+  return `https://wa.me/${numero}?text=${mensagem}`;
+}
+
+export function inscricoesEstaoAbertas(dataReferencia: Date = new Date()) {
+  const fimDoEvento = new Date(`${eventoConfig.dataEventoISO}T23:59:59`);
+  return dataReferencia.getTime() <= fimDoEvento.getTime();
+}
