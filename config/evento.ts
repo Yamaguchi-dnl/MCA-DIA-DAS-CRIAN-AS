@@ -21,8 +21,8 @@ export const eventoConfig = {
 
   // Data, horário e local
   // Formato ISO (AAAA-MM-DD), usado no JSON-LD do evento para SEO.
-  dataEventoISO: "2025-10-03",
-  dataEventoExibicao: "03 de outubro de 2025 (sexta-feira)",
+  dataEventoISO: "2026-10-03",
+  dataEventoExibicao: "03 de outubro de 2026 (sábado)",
   horario: "a partir das 12h",
   local: "IAP Barreirinha",
   endereco: "Rua Flávio Dallegrave, 9745, Curitiba - PR",
