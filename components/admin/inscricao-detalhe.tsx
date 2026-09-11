@@ -3,7 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { CheckCircle2, Loader2, MessageCircle, ShieldAlert } from "lucide-react";
+import {
+  CheckCircle2,
+  Image as ImageIcon,
+  Loader2,
+  MessageCircle,
+  ShieldAlert,
+  ToyBrick,
+} from "lucide-react";
 
 import {
   atualizarInscricao,
@@ -20,6 +27,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Select,
@@ -60,6 +68,15 @@ export function InscricaoDetalhe({
     idade: String(inscricao.idade),
     nome_responsavel: inscricao.nome_responsavel,
     telefone: inscricao.telefone,
+    possui_restricao_alimentar: inscricao.possui_restricao_alimentar,
+    restricao_alimentar_detalhe: inscricao.restricao_alimentar_detalhe ?? "",
+    possui_informacao_importante: inscricao.possui_informacao_importante,
+    informacao_importante_detalhe:
+      inscricao.informacao_importante_detalhe ?? "",
+    contato_emergencia_nome: inscricao.contato_emergencia_nome,
+    contato_emergencia_parentesco: inscricao.contato_emergencia_parentesco,
+    contato_emergencia_telefone: inscricao.contato_emergencia_telefone,
+    autorizacao_imagem: inscricao.autorizacao_imagem,
     observacoes_administrativas: inscricao.observacoes_administrativas ?? "",
     status_inscricao: inscricao.status_inscricao,
   });
@@ -85,6 +102,18 @@ export function InscricaoDetalhe({
         idade: idadeNumero,
         nome_responsavel: form.nome_responsavel,
         telefone: form.telefone,
+        possui_restricao_alimentar: form.possui_restricao_alimentar,
+        restricao_alimentar_detalhe: form.possui_restricao_alimentar
+          ? form.restricao_alimentar_detalhe || null
+          : null,
+        possui_informacao_importante: form.possui_informacao_importante,
+        informacao_importante_detalhe: form.possui_informacao_importante
+          ? form.informacao_importante_detalhe || null
+          : null,
+        contato_emergencia_nome: form.contato_emergencia_nome,
+        contato_emergencia_parentesco: form.contato_emergencia_parentesco,
+        contato_emergencia_telefone: form.contato_emergencia_telefone,
+        autorizacao_imagem: form.autorizacao_imagem,
         observacoes_administrativas: form.observacoes_administrativas || null,
         status_inscricao: form.status_inscricao,
       };
@@ -177,6 +206,144 @@ export function InscricaoDetalhe({
                 value={form.telefone}
                 onChange={(e) => atualizarCampo("telefone", e.target.value)}
               />
+            </div>
+          </div>
+
+          <div className="space-y-4 border-t border-border/70 pt-6">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Saúde e segurança
+            </p>
+
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="possui_restricao_alimentar"
+                checked={form.possui_restricao_alimentar}
+                onChange={(e) =>
+                  atualizarCampo("possui_restricao_alimentar", e.target.checked)
+                }
+                className="mt-1 h-4 w-4"
+              />
+              <div className="flex-1 space-y-2">
+                <Label htmlFor="possui_restricao_alimentar">
+                  Possui alergia ou restrição alimentar
+                </Label>
+                {form.possui_restricao_alimentar ? (
+                  <Textarea
+                    value={form.restricao_alimentar_detalhe}
+                    onChange={(e) =>
+                      atualizarCampo(
+                        "restricao_alimentar_detalhe",
+                        e.target.value,
+                      )
+                    }
+                    placeholder="Descreva a alergia ou restrição"
+                  />
+                ) : null}
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="possui_informacao_importante"
+                checked={form.possui_informacao_importante}
+                onChange={(e) =>
+                  atualizarCampo(
+                    "possui_informacao_importante",
+                    e.target.checked,
+                  )
+                }
+                className="mt-1 h-4 w-4"
+              />
+              <div className="flex-1 space-y-2">
+                <Label htmlFor="possui_informacao_importante">
+                  Possui informação importante de segurança/bem-estar
+                </Label>
+                {form.possui_informacao_importante ? (
+                  <Textarea
+                    value={form.informacao_importante_detalhe}
+                    onChange={(e) =>
+                      atualizarCampo(
+                        "informacao_importante_detalhe",
+                        e.target.value,
+                      )
+                    }
+                    placeholder="Descreva a informação"
+                  />
+                ) : null}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-4 border-t border-border/70 pt-6 sm:grid-cols-3">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-3">
+              Contato de emergência
+            </p>
+            <div className="space-y-2">
+              <Label>Nome</Label>
+              <Input
+                value={form.contato_emergencia_nome}
+                onChange={(e) =>
+                  atualizarCampo("contato_emergencia_nome", e.target.value)
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Parentesco</Label>
+              <Input
+                value={form.contato_emergencia_parentesco}
+                onChange={(e) =>
+                  atualizarCampo(
+                    "contato_emergencia_parentesco",
+                    e.target.value,
+                  )
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Telefone</Label>
+              <Input
+                value={form.contato_emergencia_telefone}
+                onChange={(e) =>
+                  atualizarCampo(
+                    "contato_emergencia_telefone",
+                    e.target.value,
+                  )
+                }
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-4 border-t border-border/70 pt-6 sm:grid-cols-2">
+            <div className="space-y-2">
+              <Label className="flex items-center gap-1.5">
+                <ToyBrick className="h-4 w-4" /> Autorização de brinquedos
+              </Label>
+              <div>
+                <Badge variant={inscricao.autorizacao_brinquedos ? "success" : "destructive"}>
+                  {inscricao.autorizacao_brinquedos ? "Autorizado" : "Não autorizado"}
+                </Badge>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label className="flex items-center gap-1.5">
+                <ImageIcon className="h-4 w-4" /> Autorização de imagem
+              </Label>
+              <Select
+                value={form.autorizacao_imagem ? "sim" : "nao"}
+                onValueChange={(valor) =>
+                  atualizarCampo("autorizacao_imagem", valor === "sim")
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="sim">Autoriza</SelectItem>
+                  <SelectItem value="nao">Não autoriza</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 

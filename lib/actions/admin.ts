@@ -14,6 +14,14 @@ export type AtualizacaoInscricao = Partial<
     | "idade"
     | "nome_responsavel"
     | "telefone"
+    | "possui_restricao_alimentar"
+    | "restricao_alimentar_detalhe"
+    | "possui_informacao_importante"
+    | "informacao_importante_detalhe"
+    | "contato_emergencia_nome"
+    | "contato_emergencia_parentesco"
+    | "contato_emergencia_telefone"
+    | "autorizacao_imagem"
     | "status_inscricao"
     | "observacoes_administrativas"
   >
@@ -26,6 +34,14 @@ const CAMPOS_AUDITADOS: (keyof AtualizacaoInscricao)[] = [
   "idade",
   "nome_responsavel",
   "telefone",
+  "possui_restricao_alimentar",
+  "restricao_alimentar_detalhe",
+  "possui_informacao_importante",
+  "informacao_importante_detalhe",
+  "contato_emergencia_nome",
+  "contato_emergencia_parentesco",
+  "contato_emergencia_telefone",
+  "autorizacao_imagem",
 ];
 
 export async function atualizarInscricao(
@@ -114,6 +130,11 @@ export async function anonimizarInscricao(
       nome_crianca: "Criança removida (LGPD)",
       nome_responsavel: "Responsável removido (LGPD)",
       telefone: "00000000000",
+      restricao_alimentar_detalhe: null,
+      informacao_importante_detalhe: null,
+      contato_emergencia_nome: "Removido (LGPD)",
+      contato_emergencia_parentesco: "Removido (LGPD)",
+      contato_emergencia_telefone: "00000000000",
       status_inscricao: "cancelado",
     })
     .eq("id", id);

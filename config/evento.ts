@@ -12,12 +12,12 @@
 
 export const eventoConfig = {
   // Identificação do evento
-  nomeEvento: "Dia das Crianças",
-  temaEvento: "Uma tarde de festa para a criançada!",
+  nomeEvento: "O Incrível Parque MCA",
+  subtitulo: "Dia das Crianças",
   descricaoCurta:
-    "Uma tarde especial de alegria e diversão para as crianças da IAP Barreirinha. Entrada gratuita — garanta a vaga da criançada!",
+    "Um dia muito especial preparado com carinho para as nossas crianças! Entrada gratuita — garanta a vaga da criançada.",
   descricaoCompleta:
-    "Preparamos uma tarde cheia de alegria para comemorar o Dia das Crianças com a criançada da nossa igreja e da comunidade. Um tempo de diversão, brincadeiras e comunhão para toda a família, com entrada totalmente gratuita.",
+    "Um dia muito especial preparado com carinho para as nossas crianças, com brinquedos, brincadeiras e diversão para comemorar o Dia das Crianças. Para garantir a segurança e uma boa organização, pedimos que todas as informações do formulário sejam preenchidas pelo responsável.",
 
   // Data, horário e local
   // Formato ISO (AAAA-MM-DD) para permitir cálculo de prazo de inscrição.
@@ -45,7 +45,7 @@ export const eventoConfig = {
   imagemSocial: "/og-image.png",
 
   // Conteúdo institucional
-  nomeIgreja: "IAP Barreirinha",
+  nomeIgreja: "IAP Barreirinha — MCA",
 } as const;
 
 export function gerarMensagemWhatsapp(nomeCrianca: string) {

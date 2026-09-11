@@ -34,7 +34,19 @@ create table if not exists public.inscricoes (
   idade smallint not null check (idade >= 0 and idade <= 17),
   nome_responsavel varchar(200) not null,
   telefone varchar(20) not null,
-  consentimento_privacidade boolean not null default false,
+
+  possui_restricao_alimentar boolean not null default false,
+  restricao_alimentar_detalhe text,
+  possui_informacao_importante boolean not null default false,
+  informacao_importante_detalhe text,
+
+  contato_emergencia_nome varchar(200) not null,
+  contato_emergencia_parentesco varchar(100) not null,
+  contato_emergencia_telefone varchar(20) not null,
+
+  autorizacao_brinquedos boolean not null default false,
+  autorizacao_imagem boolean not null default false,
+
   status_inscricao varchar(20) not null default 'pendente'
     check (status_inscricao in ('pendente', 'confirmado', 'cancelado')),
   observacoes_administrativas text,

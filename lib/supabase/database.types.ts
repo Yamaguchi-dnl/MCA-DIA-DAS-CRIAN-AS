@@ -6,7 +6,15 @@ export type Inscricao = {
   idade: number;
   nome_responsavel: string;
   telefone: string;
-  consentimento_privacidade: boolean;
+  possui_restricao_alimentar: boolean;
+  restricao_alimentar_detalhe: string | null;
+  possui_informacao_importante: boolean;
+  informacao_importante_detalhe: string | null;
+  contato_emergencia_nome: string;
+  contato_emergencia_parentesco: string;
+  contato_emergencia_telefone: string;
+  autorizacao_brinquedos: boolean;
+  autorizacao_imagem: boolean;
   status_inscricao: StatusInscricao;
   observacoes_administrativas: string | null;
   created_at: string;
@@ -15,9 +23,26 @@ export type Inscricao = {
 
 export type InscricaoInsert = Pick<
   Inscricao,
-  "nome_crianca" | "idade" | "nome_responsavel" | "telefone" | "consentimento_privacidade"
+  | "nome_crianca"
+  | "idade"
+  | "nome_responsavel"
+  | "telefone"
+  | "possui_restricao_alimentar"
+  | "possui_informacao_importante"
+  | "contato_emergencia_nome"
+  | "contato_emergencia_parentesco"
+  | "contato_emergencia_telefone"
+  | "autorizacao_brinquedos"
+  | "autorizacao_imagem"
 > &
-  Partial<Pick<Inscricao, "status_inscricao">>;
+  Partial<
+    Pick<
+      Inscricao,
+      | "restricao_alimentar_detalhe"
+      | "informacao_importante_detalhe"
+      | "status_inscricao"
+    >
+  >;
 
 export type Administrador = {
   id: string;

@@ -1,7 +1,7 @@
-# Dia das Crianças — IAP Barreirinha
+# O Incrível Parque MCA — IAP Barreirinha
 
-Landing page com inscrições e painel administrativo para o evento **Dia das
-Crianças** da IAP Barreirinha.
+Landing page com inscrições e painel administrativo para **O Incrível
+Parque MCA**, o evento de Dia das Crianças da IAP Barreirinha.
 
 - **Data:** 03 de outubro de 2025, a partir das 12h
 - **Local:** IAP Barreirinha — Rua Flávio Dallegrave, 9745, Curitiba - PR
@@ -78,7 +78,7 @@ centraliza todos os textos, datas, local e contatos exibidos no site.
 Campos marcados como `[A_DEFINIR: ...]` precisam ser substituídos pelos
 dados reais antes da publicação:
 
-- Nome, tema e descrições do evento
+- Nome, subtítulo e descrições do evento
 - Data, horário e local
 - Faixa etária e limite de vagas (ou `null` para sem limite)
 - Número de WhatsApp da organização e Instagram/e-mail de contato
@@ -148,11 +148,16 @@ supabase/migrations/          SQL de schema, índices e RLS
 
 O evento é gratuito, então não há integração de pagamento:
 
-1. O responsável preenche nome da criança, idade, nome do responsável e
-   WhatsApp em `/inscricao`.
+1. O responsável preenche, em `/inscricao`: nome da criança, idade, nome e
+   WhatsApp do responsável, se a criança possui alergia/restrição
+   alimentar, informações importantes de segurança/bem-estar, um contato
+   de emergência (nome, parentesco e telefone), a autorização de uso dos
+   brinquedos (obrigatória) e a autorização de uso de imagem (sim/não).
 2. A inscrição é salva com status `pendente`.
 3. A organização confirma a presença manualmente no painel administrativo
-   (`/admin`), mudando o status para `confirmado`.
+   (`/admin`), mudando o status para `confirmado`. Inscrições com alergia,
+   restrição alimentar ou informação de segurança marcada aparecem com um
+   ícone de alerta na lista.
 
 ## Publicação (Vercel)
 

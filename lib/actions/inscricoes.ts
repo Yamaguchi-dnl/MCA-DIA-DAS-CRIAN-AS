@@ -76,7 +76,21 @@ export async function criarInscricao(
       idade: valores.idade,
       nome_responsavel: valores.nomeResponsavel,
       telefone: valores.telefone,
-      consentimento_privacidade: valores.consentimentoPrivacidade,
+      possui_restricao_alimentar: valores.possuiRestricaoAlimentar === "sim",
+      restricao_alimentar_detalhe:
+        valores.possuiRestricaoAlimentar === "sim"
+          ? valores.restricaoAlimentarDetalhe?.trim() || null
+          : null,
+      possui_informacao_importante: valores.possuiInformacaoImportante === "sim",
+      informacao_importante_detalhe:
+        valores.possuiInformacaoImportante === "sim"
+          ? valores.informacaoImportanteDetalhe?.trim() || null
+          : null,
+      contato_emergencia_nome: valores.contatoEmergenciaNome,
+      contato_emergencia_parentesco: valores.contatoEmergenciaParentesco,
+      contato_emergencia_telefone: valores.contatoEmergenciaTelefone,
+      autorizacao_brinquedos: valores.autorizacaoBrinquedos,
+      autorizacao_imagem: valores.autorizacaoImagem === "sim",
       status_inscricao: "pendente",
     })
     .select("id")

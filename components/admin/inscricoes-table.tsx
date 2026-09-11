@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, TriangleAlert } from "lucide-react";
 
 import type { Inscricao } from "@/lib/supabase/database.types";
 import { formatarData, rotuloStatusInscricao } from "@/lib/format";
@@ -62,7 +62,16 @@ export function InscricoesTable({
               return (
                 <TableRow key={inscricao.id}>
                   <TableCell className="font-medium">
-                    {inscricao.nome_crianca}
+                    <span className="inline-flex items-center gap-1.5">
+                      {inscricao.nome_crianca}
+                      {(inscricao.possui_restricao_alimentar ||
+                        inscricao.possui_informacao_importante) && (
+                        <TriangleAlert
+                          className="h-3.5 w-3.5 text-warning"
+                          aria-label="Possui alergia, restrição ou informação de segurança"
+                        />
+                      )}
+                    </span>
                   </TableCell>
                   <TableCell>{inscricao.idade} anos</TableCell>
                   <TableCell>{inscricao.nome_responsavel}</TableCell>

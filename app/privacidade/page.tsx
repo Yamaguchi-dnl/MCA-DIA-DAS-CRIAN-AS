@@ -37,8 +37,12 @@ export default function PaginaPrivacidade() {
               </h2>
               <p>
                 Coletamos apenas os dados necessários para organizar o
-                evento: nome da criança, idade, nome do responsável e o
-                WhatsApp do responsável.
+                evento com segurança: nome da criança, idade, nome e
+                WhatsApp do responsável, informações sobre alergias,
+                restrições alimentares ou outras informações importantes
+                de segurança/bem-estar (quando informadas), os dados de um
+                contato de emergência, e as autorizações de uso dos
+                brinquedos e de imagem.
               </p>
             </div>
 
@@ -48,10 +52,12 @@ export default function PaginaPrivacidade() {
               </h2>
               <p>
                 Os dados são usados exclusivamente para confirmar a
-                inscrição, organizar a logística do evento e entrar em
-                contato com o responsável quando necessário. Não
-                compartilhamos esses dados com terceiros para fins
-                comerciais.
+                inscrição, organizar a logística do evento, garantir a
+                segurança da criança durante as atividades e entrar em
+                contato com o responsável quando necessário. Fotos e
+                vídeos só são usados em divulgação quando a autorização de
+                imagem for marcada como &quot;sim&quot;. Não compartilhamos
+                esses dados com terceiros para fins comerciais.
               </p>
             </div>
 

@@ -33,12 +33,12 @@ export default function OgImage() {
             borderRadius: 999,
           }}
         >
-          🎈 EVENTO GRATUITO
+          🎪 EVENTO GRATUITO
         </div>
         <div
           style={{
             marginTop: 32,
-            fontSize: 76,
+            fontSize: 72,
             fontWeight: 800,
             lineHeight: 1.05,
           }}
@@ -46,7 +46,7 @@ export default function OgImage() {
           {eventoConfig.nomeEvento}
         </div>
         <div style={{ marginTop: 20, fontSize: 36, fontWeight: 600 }}>
-          {eventoConfig.temaEvento}
+          {eventoConfig.subtitulo}
         </div>
         <div style={{ marginTop: 28, fontSize: 32, opacity: 0.95 }}>
           {eventoConfig.dataEventoExibicao} · {eventoConfig.horario}

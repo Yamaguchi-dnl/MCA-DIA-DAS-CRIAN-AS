@@ -58,7 +58,7 @@ export function Hero() {
         </Link>
 
         <span className="font-display text-sm font-medium tracking-wide text-evento-marrom lg:justify-self-center">
-          {eventoConfig.nomeEvento}
+          {eventoConfig.subtitulo}
         </span>
 
         <Button
@@ -86,11 +86,11 @@ export function Hero() {
         <div className="relative px-6 sm:px-10 lg:w-full lg:px-12 xl:px-20 2xl:px-32">
           <div className="relative mx-auto flex max-w-xl flex-col items-center gap-6 text-center">
             <span className="animate-fade-up rounded-full bg-evento-amarelo px-4 py-1.5 text-[11px] font-bold uppercase tracking-wide text-evento-marrom sm:text-xs sm:tracking-[0.15em]">
-              🎈 Entrada gratuita
+              🎪 Entrada gratuita
             </span>
 
             <h1 className="animate-fade-up text-balance font-display text-4xl font-semibold leading-[1.05] text-evento-laranja sm:text-5xl lg:text-6xl">
-              {eventoConfig.temaEvento}
+              {eventoConfig.nomeEvento}
             </h1>
 
             <p
