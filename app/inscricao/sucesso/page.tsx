@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CalendarDays, MapPin, PartyPopper } from "lucide-react";
+import { CalendarDays, MapPin, MessageCircle, PartyPopper } from "lucide-react";
 
 import { eventoConfig } from "@/config/evento";
 import { Header } from "@/components/layout/header";
@@ -55,7 +55,24 @@ export default function PaginaSucesso({
               </p>
             </div>
 
-            <Button asChild size="lg" className="w-full">
+            <a
+              href={eventoConfig.linkGrupoWhatsappPais}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-3 rounded-xl bg-[#25D366] px-4 py-3.5 text-left text-white shadow-sm transition hover:bg-[#1fb959]"
+            >
+              <MessageCircle className="h-6 w-6 shrink-0" />
+              <span>
+                <span className="block text-sm font-bold">
+                  Entre no grupo de pais do evento
+                </span>
+                <span className="block text-xs text-white/90">
+                  Receba os avisos e informações do dia pelo WhatsApp
+                </span>
+              </span>
+            </a>
+
+            <Button asChild size="lg" variant="outline" className="w-full">
               <Link href="/inscricao">Inscrever outra criança</Link>
             </Button>
 

@@ -40,6 +40,10 @@ export const eventoConfig = {
   instagram: "[A_DEFINIR: link do Instagram]",
   emailContato: "[A_DEFINIR: e-mail de contato]",
 
+  // Grupo de WhatsApp dos pais/responsáveis — exibido na página de
+  // sucesso da inscrição, para receberem os avisos e informações do dia.
+  linkGrupoWhatsappPais: "https://chat.whatsapp.com/KaBsBPpI1SkDeYJCMDtREb?mode=gi_t",
+
   // Identidade visual
   logo: "/logo-iap.png",
   imagemSocial: "/og-image.png",
