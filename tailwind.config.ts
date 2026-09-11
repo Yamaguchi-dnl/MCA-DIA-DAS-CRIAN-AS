@@ -72,6 +72,10 @@ const config: Config = {
           marrom: "#4A2E22",
           texto: "#2B2320",
           branco: "#FFFFFF",
+          // Cores extras só para os confetes/formas decorativas do hero
+          rosa: "#F45C9C",
+          verde: "#2FAE6E",
+          azul: "#2E86DE",
         },
       },
       borderRadius: {
