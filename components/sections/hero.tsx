@@ -17,7 +17,6 @@ const fotosColagem: FotoColagem[] = [
   { src: "/criancas-1.jpg", alt: "Crianças brincando na igreja" },
   { src: "/criancas-2.jpg", alt: "Criançada se divertindo no evento" },
   { src: "/criancas-3.jpg", alt: "Brincadeiras do Dia das Crianças" },
-  { src: "/criancas-4.jpg", alt: "Festa da criançada na IAP Barreirinha" },
 ];
 
 function fotoExiste(src: string) {
@@ -46,7 +45,7 @@ function Foto({ foto, className }: { foto: FotoColagem; className?: string }) {
 }
 
 export function Hero() {
-  const [foto1, foto2, foto3, foto4] = fotosColagem;
+  const [foto1, foto2, foto3] = fotosColagem;
 
   return (
     <section className="relative overflow-hidden bg-evento-branco">
@@ -72,9 +71,8 @@ export function Hero() {
 
       <div className="relative py-10 lg:flex lg:min-h-[80vh] lg:items-center lg:py-16 xl:min-h-[85vh]">
         <div className="pointer-events-none absolute inset-0 hidden lg:block">
-          <div className="absolute left-[3%] top-1/2 w-48 -translate-y-[74%] xl:left-[6%] xl:w-56 2xl:left-[10%] 2xl:w-64">
-            <Foto foto={foto1} className="relative aspect-[3/4] w-full -rotate-3" />
-            <Foto foto={foto4} className="absolute left-[-8%] top-[62%] aspect-[4/5] w-[92%] rotate-2" />
+          <div className="absolute left-[3%] top-1/2 w-52 -translate-y-1/2 xl:left-[6%] xl:w-60 2xl:left-[10%] 2xl:w-72">
+            <Foto foto={foto1} className="aspect-[3/4] w-full -rotate-3" />
           </div>
 
           <div className="absolute right-[3%] top-1/2 w-48 -translate-y-[78%] xl:right-[6%] xl:w-56 2xl:right-[10%] 2xl:w-64">
@@ -125,15 +123,10 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-xs grid-cols-2 gap-4 sm:max-w-sm lg:hidden">
-            <div className="flex flex-col gap-4">
-              <Foto foto={foto1} className="aspect-[3/4]" />
-              <Foto foto={foto4} className="aspect-[4/5]" />
-            </div>
-            <div className="flex flex-col gap-4 pt-8">
-              <Foto foto={foto2} className="aspect-[4/5]" />
-              <Foto foto={foto3} className="aspect-[3/4]" />
-            </div>
+          <div className="mx-auto mt-12 grid max-w-xs grid-cols-2 grid-rows-2 gap-4 sm:max-w-sm lg:hidden">
+            <Foto foto={foto1} className="row-span-2 aspect-[3/5]" />
+            <Foto foto={foto2} className="aspect-square" />
+            <Foto foto={foto3} className="aspect-square" />
           </div>
         </div>
       </div>

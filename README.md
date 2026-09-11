@@ -83,11 +83,23 @@ dados reais antes da publicação:
 - Faixa etária e limite de vagas (ou `null` para sem limite)
 - Número de WhatsApp da organização e Instagram/e-mail de contato
 
-**Fotos da criançada (colagem da tela inicial):** salve os arquivos em
-`public/criancas-1.jpg` até `public/criancas-4.jpg` (os caminhos já estão
+**Fotos da criançada (colagem da tela inicial):** a colagem usa
+`public/criancas-1.jpg`, `criancas-2.jpg` e `criancas-3.jpg` (caminhos
 configurados em `components/sections/hero.tsx`). Enquanto os arquivos não
 existirem, aparece um bloco decorativo no lugar da foto — o site funciona
 normalmente sem elas.
+
+Para trocar as fotos: coloque os arquivos brutos (celular, câmera etc.,
+sem se preocupar com tamanho) em `public/fotos/` — essa pasta é ignorada
+pelo Git, então nunca é enviada ao repositório — e rode:
+
+```bash
+node scripts/otimizar-fotos.js
+```
+
+O script redimensiona e comprime cada foto para `public/criancas-N.jpg`.
+Para usar arquivos com outros nomes, edite a lista no início de
+`scripts/otimizar-fotos.js`.
 
 ### 6. Rodar em desenvolvimento
 
