@@ -1,7 +1,7 @@
 "use server";
 
 import { createAdminClient } from "@/lib/supabase/admin";
-import { eventoConfig, inscricoesEstaoAbertas } from "@/config/evento";
+import { eventoConfig } from "@/config/evento";
 import {
   inscricaoFormSchema,
   type InscricaoFormValues,
@@ -20,13 +20,6 @@ export async function criarInscricao(
     return {
       sucesso: false,
       erro: "Alguns dados do formulário são inválidos. Revise e tente novamente.",
-    };
-  }
-
-  if (!inscricoesEstaoAbertas()) {
-    return {
-      sucesso: false,
-      erro: "As inscrições para este evento já foram encerradas.",
     };
   }
 

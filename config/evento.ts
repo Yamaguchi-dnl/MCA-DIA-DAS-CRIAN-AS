@@ -20,7 +20,7 @@ export const eventoConfig = {
     "Um dia muito especial preparado com carinho para as nossas crianças, com brinquedos, brincadeiras e diversão para comemorar o Dia das Crianças. Para garantir a segurança e uma boa organização, pedimos que todas as informações do formulário sejam preenchidas pelo responsável.",
 
   // Data, horário e local
-  // Formato ISO (AAAA-MM-DD) para permitir cálculo de prazo de inscrição.
+  // Formato ISO (AAAA-MM-DD), usado no JSON-LD do evento para SEO.
   dataEventoISO: "2025-10-03",
   dataEventoExibicao: "03 de outubro de 2025 (sexta-feira)",
   horario: "a partir das 12h",
@@ -57,9 +57,4 @@ export function gerarLinkWhatsapp(nomeCrianca: string) {
   if (!numero) return null;
   const mensagem = encodeURIComponent(gerarMensagemWhatsapp(nomeCrianca));
   return `https://wa.me/${numero}?text=${mensagem}`;
-}
-
-export function inscricoesEstaoAbertas(dataReferencia: Date = new Date()) {
-  const fimDoEvento = new Date(`${eventoConfig.dataEventoISO}T23:59:59`);
-  return dataReferencia.getTime() <= fimDoEvento.getTime();
 }

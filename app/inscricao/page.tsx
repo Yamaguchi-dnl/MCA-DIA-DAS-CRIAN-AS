@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 
-import { eventoConfig, inscricoesEstaoAbertas } from "@/config/evento";
+import { eventoConfig } from "@/config/evento";
 import { Header } from "@/components/layout/header";
 import { InscricaoForm } from "@/components/forms/inscricao-form";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function PaginaInscricao() {
-  const aberta = inscricoesEstaoAbertas();
-
   return (
     <>
       <Header />
@@ -63,29 +61,16 @@ export default function PaginaInscricao() {
 
           <Card>
             <CardContent className="p-8">
-              {aberta ? (
-                <>
-                  <h2 className="font-display text-2xl text-evento-marrom">
-                    Dados da inscrição
-                  </h2>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Preencha com atenção — usaremos esses dados para
-                    confirmar a vaga da criançada.
-                  </p>
-                  <div className="mt-8">
-                    <InscricaoForm />
-                  </div>
-                </>
-              ) : (
-                <div className="py-10 text-center">
-                  <h2 className="font-display text-2xl text-evento-marrom">
-                    Inscrições encerradas
-                  </h2>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    As inscrições para este evento já foram encerradas.
-                  </p>
-                </div>
-              )}
+              <h2 className="font-display text-2xl text-evento-marrom">
+                Dados da inscrição
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Preencha com atenção — usaremos esses dados para confirmar
+                a vaga da criançada.
+              </p>
+              <div className="mt-8">
+                <InscricaoForm />
+              </div>
             </CardContent>
           </Card>
         </div>
