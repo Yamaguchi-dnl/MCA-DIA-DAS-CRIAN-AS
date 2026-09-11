@@ -22,7 +22,7 @@ import type {
   Inscricao,
 } from "@/lib/supabase/database.types";
 import { formatarDataHora, rotuloStatusInscricao } from "@/lib/format";
-import { gerarLinkWhatsapp } from "@/config/evento";
+import { eventoConfig, gerarLinkWhatsapp } from "@/config/evento";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -92,8 +92,12 @@ export function InscricaoDetalhe({
     setSalvando(true);
     try {
       const idadeNumero = Number(form.idade);
-      if (!Number.isInteger(idadeNumero) || idadeNumero < 0 || idadeNumero > 17) {
-        toast.error("Informe uma idade válida (0 a 17 anos).");
+      if (
+        !Number.isInteger(idadeNumero) ||
+        idadeNumero < eventoConfig.idadeMinima ||
+        idadeNumero > eventoConfig.idadeMaxima
+      ) {
+        toast.error(`Informe uma idade válida (${eventoConfig.faixaEtariaExibicao}).`);
         return;
       }
 
@@ -185,8 +189,8 @@ export function InscricaoDetalhe({
               <Label>Idade</Label>
               <Input
                 type="number"
-                min={0}
-                max={17}
+                min={eventoConfig.idadeMinima}
+                max={eventoConfig.idadeMaxima}
                 value={form.idade}
                 onChange={(e) => atualizarCampo("idade", e.target.value)}
               />

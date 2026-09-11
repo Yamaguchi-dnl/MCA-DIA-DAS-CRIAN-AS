@@ -23,16 +23,16 @@ export const eventoConfig = {
   // Formato ISO (AAAA-MM-DD), usado no JSON-LD do evento para SEO.
   dataEventoISO: "2026-10-03",
   dataEventoExibicao: "03 de outubro de 2026 (sábado)",
-  horario: "a partir das 12h",
+  horario: "a partir das 13h",
   local: "IAP Barreirinha",
   endereco: "Rua Flávio Dallegrave, 9745, Curitiba - PR",
   linkMapa: "[A_DEFINIR: link do Google Maps, opcional]",
 
   // Inscrição
   gratuito: true,
-  idadeMinima: 0,
+  idadeMinima: 2,
   idadeMaxima: 17,
-  faixaEtariaExibicao: "0 a 17 anos",
+  faixaEtariaExibicao: "2 a 17 anos",
   limiteVagas: null as number | null, // null = sem limite de vagas
 
   // Contato

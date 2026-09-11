@@ -31,7 +31,7 @@ create policy "Administrador vê o próprio registro"
 create table if not exists public.inscricoes (
   id uuid primary key default gen_random_uuid(),
   nome_crianca varchar(200) not null,
-  idade smallint not null check (idade >= 0 and idade <= 17),
+  idade smallint not null check (idade >= 2 and idade <= 17),
   nome_responsavel varchar(200) not null,
   telefone varchar(20) not null,
 

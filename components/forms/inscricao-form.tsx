@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
+import { eventoConfig } from "@/config/evento";
 import { criarInscricao } from "@/lib/actions/inscricoes";
 import {
   inscricaoFormSchema,
@@ -147,8 +148,8 @@ export function InscricaoForm() {
                   <Input
                     type="number"
                     inputMode="numeric"
-                    min={0}
-                    max={17}
+                    min={eventoConfig.idadeMinima}
+                    max={eventoConfig.idadeMaxima}
                     placeholder="Ex.: 8"
                     value={Number.isNaN(field.value) ? "" : field.value}
                     onChange={(evento) =>
