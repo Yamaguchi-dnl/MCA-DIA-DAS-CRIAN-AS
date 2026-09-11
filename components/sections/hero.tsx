@@ -76,24 +76,27 @@ function FormaOrganica({
   );
 }
 
-function FotoCircular({
+function FotoOrganica({
   foto,
   className,
   anelClassName,
+  indiceForma = 0,
 }: {
   foto: FotoColagem;
   className?: string;
   anelClassName?: string;
+  indiceForma?: number;
 }) {
   const existe = fotoExiste(foto.src);
 
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-full bg-evento-amarelo/20 shadow-xl shadow-evento-marrom/15 ring-8",
+        "relative overflow-hidden bg-evento-amarelo/20 shadow-xl shadow-evento-marrom/15 ring-8",
         anelClassName ?? "ring-evento-branco",
         className,
       )}
+      style={{ borderRadius: FORMAS_ORGANICAS[indiceForma % FORMAS_ORGANICAS.length] }}
     >
       {existe ? (
         <Image
@@ -215,7 +218,7 @@ export function Hero() {
                 🎪 Entrada gratuita
               </span>
 
-              <h1 className="animate-fade-up text-balance font-display text-4xl font-semibold leading-[1.05] text-evento-marrom sm:text-5xl lg:text-6xl xl:text-7xl">
+              <h1 className="animate-fade-up text-balance font-display text-4xl font-semibold leading-[1.05] text-evento-marrom sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
                 <TituloEvento titulo={eventoConfig.nomeEvento} />
               </h1>
 
@@ -264,21 +267,24 @@ export function Hero() {
             </div>
 
             {/* Foto com formas coloridas */}
-            <div className="relative mx-auto aspect-square w-full max-w-sm lg:max-w-lg xl:max-w-xl">
+            <div className="relative mx-auto aspect-square w-full max-w-xs sm:max-w-sm lg:max-w-sm xl:max-w-lg 2xl:max-w-xl">
               <FormasDecorativas />
-              <FotoCircular
+              <FotoOrganica
                 foto={foto1}
+                indiceForma={0}
                 className="relative z-10 aspect-square w-full"
                 anelClassName="ring-evento-amarelo"
               />
-              <FotoCircular
+              <FotoOrganica
                 foto={foto2}
-                className="absolute -left-6 bottom-0 z-20 aspect-square w-24 sm:w-28 lg:-left-12 lg:w-32"
+                indiceForma={2}
+                className="absolute -left-6 bottom-0 z-20 aspect-square w-24 sm:w-28 lg:-left-8 lg:w-28 xl:-left-12 xl:w-36 2xl:-left-14 2xl:w-44"
                 anelClassName="ring-evento-branco"
               />
-              <FotoCircular
+              <FotoOrganica
                 foto={foto3}
-                className="absolute -right-4 top-4 z-20 aspect-square w-20 sm:w-24 lg:-right-10 lg:w-28"
+                indiceForma={1}
+                className="absolute -right-3 top-3 z-20 aspect-square w-16 sm:w-20 lg:-right-6 lg:w-20 xl:-right-8 xl:w-24 2xl:-right-10 2xl:w-28"
                 anelClassName="ring-evento-branco"
               />
             </div>
