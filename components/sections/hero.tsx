@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Camera, PartyPopper, Star, Users } from "lucide-react";
@@ -43,6 +44,35 @@ function TituloEvento({ titulo }: { titulo: string }) {
         </span>
       ))}
     </>
+  );
+}
+
+const FORMAS_ORGANICAS = [
+  "63% 37% 54% 46% / 43% 37% 63% 57%",
+  "37% 63% 56% 44% / 49% 56% 44% 51%",
+  "58% 42% 39% 61% / 60% 44% 56% 40%",
+  "42% 58% 61% 39% / 39% 62% 38% 61%",
+];
+
+/** Blob orgânico (contorno irregular via border-radius), tipo confete de festa. */
+function FormaOrganica({
+  className,
+  indiceForma = 0,
+  style,
+}: {
+  className?: string;
+  indiceForma?: number;
+  style?: CSSProperties;
+}) {
+  return (
+    <span
+      aria-hidden
+      className={cn("absolute animate-float-slow", className)}
+      style={{
+        borderRadius: FORMAS_ORGANICAS[indiceForma % FORMAS_ORGANICAS.length],
+        ...style,
+      }}
+    />
   );
 }
 
@@ -94,9 +124,13 @@ function FormasDecorativas() {
         className="absolute left-0 top-[16%] h-9 w-9 rounded-full bg-evento-azul/90 animate-float-slow xl:h-12 xl:w-12"
         style={{ animationDelay: "0.6s" }}
       />
-      <span className="absolute left-[6%] bottom-[6%] h-16 w-16 rounded-tl-full rounded-tr-full rounded-br-full bg-evento-verde animate-float-slow xl:h-20 xl:w-20" />
-      <span
-        className="absolute right-0 bottom-[14%] h-14 w-14 rotate-45 rounded-2xl bg-evento-rosa animate-float-slow xl:h-16 xl:w-16"
+      <FormaOrganica
+        indiceForma={0}
+        className="left-[6%] bottom-[6%] h-16 w-16 bg-evento-verde xl:h-20 xl:w-20"
+      />
+      <FormaOrganica
+        indiceForma={1}
+        className="right-0 bottom-[14%] h-14 w-14 bg-evento-rosa xl:h-16 xl:w-16"
         style={{ animationDelay: "0.4s" }}
       />
       <span className="absolute right-[14%] top-[36%] h-6 w-6 rounded-full bg-evento-laranja-escuro" />
@@ -107,6 +141,11 @@ function FormasDecorativas() {
       <span
         className="absolute -right-2 top-[62%] h-8 w-8 -rotate-6 rounded-full border-4 border-evento-amarelo animate-float-slow"
         style={{ animationDelay: "0.3s" }}
+      />
+      <FormaOrganica
+        indiceForma={2}
+        className="left-[-4%] top-[42%] h-10 w-10 bg-evento-amarelo/70 xl:h-12 xl:w-12"
+        style={{ animationDelay: "0.55s" }}
       />
     </div>
   );
@@ -125,13 +164,15 @@ function ConfeteFundo() {
         className="absolute left-[26%] top-[6%] hidden h-6 w-6 rotate-6 fill-evento-verde/60 text-evento-verde/60 animate-float-slow lg:block"
         style={{ animationDelay: "0.7s" }}
       />
-      <span
-        className="absolute left-[2%] bottom-[10%] hidden h-10 w-10 -rotate-6 rounded-2xl border-4 border-evento-rosa/50 animate-float-slow lg:block"
+      <FormaOrganica
+        indiceForma={3}
+        className="left-[2%] bottom-[10%] hidden h-10 w-10 border-4 border-evento-rosa/50 lg:block"
         style={{ animationDelay: "0.2s" }}
       />
       <span className="absolute right-[3%] top-[8%] h-5 w-5 rounded-full bg-evento-azul/30 animate-float-slow xl:h-6 xl:w-6" />
-      <span
-        className="absolute right-[8%] bottom-[6%] hidden h-6 w-6 rotate-45 rounded-md bg-evento-amarelo/50 animate-float-slow lg:block"
+      <FormaOrganica
+        indiceForma={0}
+        className="right-[8%] bottom-[6%] hidden h-8 w-8 bg-evento-amarelo/50 lg:block"
         style={{ animationDelay: "0.9s" }}
       />
     </div>
